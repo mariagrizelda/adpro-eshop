@@ -33,16 +33,22 @@ public class ProductServiceImpl implements ProductService {
         Iterator<Product> products = productRepository.findAll();
         while (products.hasNext()) {
             Product cur = products.next();
-            if (cur.getProductId().equals(id)){
+            if (cur.getProductId().equals(id)) {
                 product = cur;
                 break;
             }
         }
         return product;
     }
+
     public void edit(Product product) {
         productRepository.edit(product);
 
     }
 
+    public void delete(Product product) {
+        if (product != null) {
+            productRepository.delete(product);
+        }
+    }
 }
