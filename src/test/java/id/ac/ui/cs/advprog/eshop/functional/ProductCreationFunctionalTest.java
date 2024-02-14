@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SeleniumJupiter.class)
-public class ProductCreationFunctionalTest {
+public class giProductCreationFunctionalTest {
 
     @LocalServerPort
     private int serverPort;
