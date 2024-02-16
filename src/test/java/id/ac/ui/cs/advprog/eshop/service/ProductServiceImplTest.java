@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class ProductServiceImplTest {
+class ProductServiceImplTest {
 
     @Mock
     private ProductRepository productRepository;
@@ -30,7 +30,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testCreateProduct() {
+    void testCreateProduct() {
         Product product = new Product();
         when(productRepository.create(any(Product.class))).thenReturn(product);
 
@@ -41,7 +41,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testFindAllProducts() {
+    void testFindAllProducts() {
         List<Product> productList = List.of(new Product(), new Product());
         Iterator<Product> productIterator = productList.iterator();
         when(productRepository.findAll()).thenReturn(productIterator);
