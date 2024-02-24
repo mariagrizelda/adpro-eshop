@@ -6,8 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 
 @Repository
-public class ProductRepository {
+public class ProductRepository implements ProductRepositoryInterface {
     private List<Product> productData = new ArrayList<>();
+    @Override
     public Product create(Product product) {
         productData.add(product);
         return product;
@@ -25,6 +26,7 @@ public class ProductRepository {
             }
         }
     }
+    @Override
     public void delete(Product product) {
         productData.remove(product);
     }
