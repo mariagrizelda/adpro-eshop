@@ -10,8 +10,13 @@ import java.util.UUID;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+    private final ProductRepository productRepository;
+
     @Autowired
-    private ProductRepository productRepository;
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     @Override
     public Product create(Product product) {
@@ -28,7 +33,17 @@ public class ProductServiceImpl implements ProductService {
         return allProduct;
     }
 
+    @Override
     public Product get(String id) {
+        return null;
+    }
+
+    @Override
+    public void edit(Product product) {
+
+    }
+
+    public Product findById(String id) {
         Product product = null;
         Iterator<Product> products = productRepository.findAll();
         while (products.hasNext()) {
@@ -41,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
-    public void edit(Product product) {
+    public void update(Product product) {
         productRepository.edit(product);
 
     }
