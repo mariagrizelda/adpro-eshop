@@ -13,8 +13,13 @@ class PaymentTest {
 
     @BeforeEach
     void setUp() {
-        // setting up a payment with initial values
-        this.payment = createSamplePayment();
+        this.payment = new Payment();
+        this.payment.setId("123456");
+        this.payment.setMethod("Voucher");
+        this.payment.setStatus("SUCCESS");
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
+        this.payment.setPaymentData(paymentData);
     }
 
     @Test
@@ -39,44 +44,27 @@ class PaymentTest {
 
     @Test
     void testSetId() {
-        // change the ID and assert the new value
         this.payment.setId("654321");
         assertEquals("654321", this.payment.getId());
     }
 
     @Test
     void testSetMethod() {
-        // change the payment method and assert the new value
         this.payment.setMethod("Bank Transfer");
         assertEquals("Bank Transfer", this.payment.getMethod());
     }
 
     @Test
     void testSetStatus() {
-        // change the payment status and assert the new value
         this.payment.setStatus("REJECTED");
         assertEquals("REJECTED", this.payment.getStatus());
     }
 
     @Test
     void testSetPaymentData() {
-        // change the payment data and assert the new value
         Map<String, String> newPaymentData = new HashMap<>();
         newPaymentData.put("voucherCode", "NEWVOUCHERCODE");
         this.payment.setPaymentData(newPaymentData);
         assertEquals("NEWVOUCHERCODE", this.payment.getPaymentData().get("voucherCode"));
-    }
-
-    private Payment createSamplePayment() {
-        Payment payment = new Payment();
-        payment.setId("123456");
-        payment.setMethod("Voucher");
-        payment.setStatus("SUCCESS");
-
-        Map<String, String> paymentData = new HashMap<>();
-        paymentData.put("voucherCode", "ESHOP1234ABC5678");
-        payment.setPaymentData(paymentData);
-
-        return payment;
     }
 }
