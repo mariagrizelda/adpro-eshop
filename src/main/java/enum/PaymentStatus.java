@@ -9,6 +9,8 @@ public enum PaymentStatus {
     SUCCESS("SUCCESS"),
     PENDING("PENDING"),
     CASH_ON_DELIVERY("CASH_ON_DELIVERY");
+    BANK_TRANSFER("Bank Transfer"),
+    VOUCHER("Voucher");
 
     private final String value;
 
