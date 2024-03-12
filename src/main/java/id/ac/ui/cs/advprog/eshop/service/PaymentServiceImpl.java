@@ -25,7 +25,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public void update(String paymentId, String status) {
         if (!isValidPaymentStatus(status)) {
-            throw new IllegalArgumentException("Invalid status: " + status);
+            throw new IllegalArgumentException(status);
         }
 
         Payment payment = paymentRepository.findById(paymentId);
@@ -62,11 +62,5 @@ public class PaymentServiceImpl implements PaymentService {
     private boolean isValidVoucherCode(String voucherCode) {
         // Your voucher code validation logic here
         return voucherCode != null && voucherCode.length() == 16 && voucherCode.startsWith("ESHOP");
-    }
-
-    public boolean validateTransfer(Map<String, String> paymentData) {
-        String CODAddress = paymentData.get("Address");
-        String CODFee = paymentData.get("Fee");
-        return CODAddress != null && !CODAddress.isEmpty() && CODFee != null && !CODFee.isEmpty();
     }
 }
