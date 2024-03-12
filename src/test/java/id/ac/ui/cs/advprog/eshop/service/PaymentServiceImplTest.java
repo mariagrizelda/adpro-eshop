@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AnotherPaymentServiceImplTest {
+public class PaymentServiceImplTest {
 
     @InjectMocks
     PaymentServiceImpl paymentService;
@@ -35,9 +35,9 @@ public class AnotherPaymentServiceImplTest {
         paymentData.put("Voucher", "ESHOP87654321CBA");
 
         payments = new ArrayList<>();
-        Payment payment1 = new Payment("12345678-aaaa-4321-bbbb-87654321cbaa", "Voucher", paymentData, PaymentStatus.SUCCESS);
+        Payment payment1 = new Payment("12345678-aaaa-4321-bbbb-87654321cbaa", "Voucher", paymentData, "SUCCESS");
         payments.add(payment1);
-        Payment payment2 = new Payment("87654321-bbbb-4321-aaaa-12345678cccc", "CODgit", null, PaymentStatus.WAITING_PAYMENT);
+        Payment payment2 = new Payment("87654321-bbbb-4321-aaaa-12345678cccc", "CODgit", null, "WAITING_PAYMENT");
         payments.add(payment2);
     }
 
