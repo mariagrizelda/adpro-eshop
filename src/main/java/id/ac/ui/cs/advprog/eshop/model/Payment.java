@@ -10,7 +10,7 @@ public class Payment {
     private String status;
     private Map<String, String> paymentData;
 
-    @Setter
+
     public Payment() {
 
     }

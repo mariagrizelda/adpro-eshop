@@ -1,6 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
-import enums.PaymentMethod;
+import enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,10 +21,10 @@ public class PaymentRepositoryTest {
     void setUp() {
         paymentRepository = new PaymentRepository();
         Map<String, String> paymentData = new HashMap<>();
-        paymentData.put(PaymentMethod.VOUCHER.getValue(), "ESHOP12345678CAB");
+        paymentData.put(PaymentStatus.VOUCHER.getValue(), "ESHOP12345678CAB");
 
         payments = new ArrayList<>();
-        Payment payment1 = new Payment("29f8db42-2c60-41ca-a8fd-abc8bfd947f1", PaymentMethod.VOUCHER.getValue(), paymentData, "SUCCESS");
+        Payment payment1 = new Payment("29f8db42-2c60-41ca-a8fd-abc8bfd947f1", PaymentStatus.VOUCHER.getValue(), paymentData, "SUCCESS");
         payments.add(payment1);
     }
 
@@ -40,25 +40,25 @@ public class PaymentRepositoryTest {
 
     @Test
     void testSaveUpdate() {
-        Payment payment = payments.get(0);
-        paymentRepository.save(payment);
+        Payment payment1 = payments.get(0);
+        paymentRepository.save(payment1);
 
-        Payment newPayment = new Payment(payment.getId(), payment.getMethod(), payment.getPaymentData(), payment.getStatus());
+        Payment newPayment = new Payment(payment1.getId(), payment1.getMethod(), payment1.getPaymentData(), payment1.getStatus());
         Payment result = paymentRepository.save(newPayment);
 
         Payment findResult = paymentRepository.findById(payments.get(0).getId());
-        assertPaymentEquals(payment, result);
-        assertPaymentEquals(payment, findResult);
+        assertPaymentEquals(payment1, result);
+        assertPaymentEquals(payment1, findResult);
     }
 
     @Test
     void testSaveCreate() {
-        Payment payment = payments.get(0);
-        Payment result = paymentRepository.save(payment);
+        Payment payment1 = payments.get(0);
+        Payment result = paymentRepository.save(payment1);
 
         Payment findResult = paymentRepository.findById(payments.get(0).getId());
-        assertPaymentEquals(payment, result);
-        assertPaymentEquals(payment, findResult);
+        assertPaymentEquals(payment1, result);
+        assertPaymentEquals(payment1, findResult);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class PaymentRepositoryTest {
             paymentRepository.save(payment);
         }
 
-        Payment findResult = paymentRepository.findById("29f8db42-2c60-41ca-a8fd-abc8bfd947f1");
+        Payment findResult = paymentRepository.findById("none");
         assertNull(findResult);
     }
 
