@@ -37,7 +37,7 @@ public class AnotherPaymentServiceImplTest {
         payments = new ArrayList<>();
         Payment payment1 = new Payment("12345678-aaaa-4321-bbbb-87654321cbaa", "Voucher", paymentData, PaymentStatus.SUCCESS);
         payments.add(payment1);
-        Payment payment2 = new Payment("87654321-bbbb-4321-aaaa-12345678cccc", "Credit Card", null, PaymentStatus.WAITING_PAYMENT);
+        Payment payment2 = new Payment("87654321-bbbb-4321-aaaa-12345678cccc", "CODgit", null, PaymentStatus.WAITING_PAYMENT);
         payments.add(payment2);
     }
 
