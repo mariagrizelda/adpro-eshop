@@ -7,7 +7,8 @@ public enum PaymentStatus {
     WAITING_PAYMENT("WAITING_PAYMENT"),
     REJECTED("REJECTED"),
     SUCCESS("SUCCESS"),
-    PENDING("PENDING");
+    PENDING("PENDING"),
+    CASH_ON_DELIVERY("CASH_ON_DELIVERY");
 
     private final String value;
 
