@@ -13,10 +13,7 @@ class PaymentTest {
 
     @BeforeEach
     void setUp() {
-        this.payment = new Payment();
-        this.payment.setId("123456");
-        this.payment.setMethod("Voucher");
-        this.payment.setStatus("SUCCESS");
+        this.payment = new Payment("123456", "Voucher", new HashMap<>(), "SUCCESS");
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         this.payment.setPaymentData(paymentData);
@@ -34,7 +31,7 @@ class PaymentTest {
 
     @Test
     void testGetStatus() {
-        assertEquals("SUCCESS", this.payment.getStatus());
+        assertEquals(enums.PaymentStatus.SUCCESS.getValue(), this.payment.getStatus());
     }
 
     @Test
@@ -50,14 +47,14 @@ class PaymentTest {
 
     @Test
     void testSetMethod() {
-        this.payment.setMethod("Bank Transfer");
-        assertEquals("Bank Transfer", this.payment.getMethod());
+        this.payment.setMethod("Cash On Delivery");
+        assertEquals("Cash On Delivery", this.payment.getMethod());
     }
 
     @Test
     void testSetStatus() {
         this.payment.setStatus("REJECTED");
-        assertEquals("REJECTED", this.payment.getStatus());
+        assertEquals(enums.PaymentStatus.REJECTED.getValue(), this.payment.getStatus());
     }
 
     @Test

@@ -1,5 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import lombok.Setter;
+
 import java.util.Map;
 
 public class Payment {
@@ -8,7 +10,7 @@ public class Payment {
     private String status;
     private Map<String, String> paymentData;
 
-
+    @Setter
     public Payment() {
 
     }
